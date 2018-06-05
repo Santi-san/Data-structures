@@ -85,7 +85,7 @@ class LinkedList {
 		} else {
 			var ref = this.getAt(index - 1);
 			if (!ref || !ref.next) {
-				return;
+				return 'invalid index...';
 			}
 			ref.next = ref.next.next;
 		}
@@ -98,7 +98,10 @@ class LinkedList {
 			this.head = new Node(data, this.head);
 			return
 		}
-		const previous = this.getAt(index - 1) || this.getLast();
+		const previous = this.getAt(index - 1);
+		if (!previous || !previous.next) {
+			return 'invalid index..';
+		}
 		const node = new Node(data, previous.next);
 		previous.next = node;
 	}
